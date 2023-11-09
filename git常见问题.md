@@ -6,7 +6,7 @@
 1. 拉取github代码报错: unable to connect to github.com: github.com[0: 140.82.113.3]: errno=Unknown error
 ~~~
 
-- 确认是否能ping通
+- 确认是否能ping通哈
 
 ~~~markdown
 $ ping github.com
