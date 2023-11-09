@@ -75,7 +75,23 @@ Resolving deltas: 100% (14/14), done.
 
 ~~~
 
-## 设置用户信息
+### 1.1致命错误：无法连接到github.com：github.com[0：140.82.121.4]：错误号=未知错误
+
+~~~markdown
+1. 问题是git端口是受限的，这就是为什么它给出了一个错误！因此，您可以使用以下命令修复它：
+git config --global url.https://github.com/.insteadOf git://github.com/
+~~~
+
+### 1.2 fatal: unable to access ‘https://github.com/…’: [OpenSSL](https://so.csdn.net/so/search?q=OpenSSL&spm=1001.2101.3001.7020) SSL_read: Connection was reset, errno 10054
+
+~~~markdown
+1. 【产生原因】一般是因为服务器的SSL证书没有经过第三方机构的签署，所以才报错【解决方式】解除ssl验证后，再次git即可
+git config --global http.sslVerify false
+~~~
+
+
+
+## 2.设置用户信息
 
 -- 设置用户名
 
