@@ -1,0 +1,77 @@
+# 一、git常见问题
+
+## 1.clone github代码报错
+
+~~~markdown
+1. 拉取github代码报错: unable to connect to github.com: github.com[0: 140.82.113.3]: errno=Unknown error
+~~~
+
+- 确认是否能ping通
+
+~~~markdown
+$ ping github.com
+Pinging github.com [20.205.243.166] with 32 bytes of data:
+Request timed out.
+
+~~~
+
+-  git clone https://…
+
+~~~markdown
+$ git clone https://github.com/tom-wong168/knowledge-system.git
+Cloning into 'knowledge-system'...
+fatal: unable to connect to github.com:
+github.com[0: 140.82.113.3]: errno=Unknown error
+
+~~~
+
+- 改https为git，git clone git://…
+
+~~~markdown
+$ git clone git://github.com/tom-wong168/knowledge-system.git
+Cloning into 'knowledge-system'...
+fatal: unable to access 'https://github.com/tom-wong168/knowledge-system.git/': Failed to connect to github.com port 443 after 21069 ms: Couldn't connect to server
+
+~~~
+
+- 重置 http.proxy
+
+~~~markdown
+$ git config --global http.proxy http://127.0.0.1:1080
+---------------------------------
+$ git config --global https.proxy https://127.0.0.1:1080
+---------------------------------
+$ git config --global --unset http.proxy
+---------------------------------
+$ git config --global --unset https.proxy
+---------------------------------
+
+~~~
+
+~~~markdown
+$ git clone git://github.com/tom-wong168/knowledge-system.git
+Cloning into 'knowledge-system'...
+fatal: unable to access 'https://github.com/tom-wong168/knowledge-system.git/': Failed to connect to github.com port 443 after 21071 ms: Couldn't connect to server
+~~~
+
+- 设置 http.sslVerify 为 false
+
+~~~markdown
+$ git config --global http.sslVerify "false"
+---------------------------------
+$ git config --global https.sslVerify "false"
+---------------------------------
+~~~
+
+~~~markdown
+$ git clone git://github.com/tom-wong168/knowledge-system.git
+Cloning into 'knowledge-system'...
+remote: Enumerating objects: 69, done.
+remote: Counting objects: 100% (69/69), done.
+remote: Compressing objects: 100% (50/50), done.
+remote: Total 69 (delta 14), reused 57 (delta 8), pack-reused 0
+Receiving objects: 100% (69/69), 4.52 MiB | 42.00 KiB/s, done.
+Resolving deltas: 100% (14/14), done.
+
+~~~
+
