@@ -75,3 +75,17 @@ Resolving deltas: 100% (14/14), done.
 
 ~~~
 
+## 设置用户信息
+
+-- 设置用户名
+
+~~~markdown
+1. git config --global user.name "Your Name"
+~~~
+
+-- 查看用户名
+
+~~~markdown
+2. git config --global user.name
+~~~
+
