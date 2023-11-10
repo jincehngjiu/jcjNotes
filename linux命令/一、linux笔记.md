@@ -10,3 +10,10 @@
    authconfig --test | grep hashing
 3. 找到密码利用在线解密工具即可哈
 ```
+
+## 2.查看目录磁盘空间
+
+~~~markdown
+1. du -ah --time --max-depth=1 /tmp/order/* | sort -hr | head -n 10
+~~~
+
